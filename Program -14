@@ -1,0 +1,59 @@
+##	Calculate the sum of series of Odd numbers
+
+
+	   LDA 2500	// Load the count of numbers into the accumulator
+	   MOV C,A	// Move the count into register C (counter)
+	   MVI B,00	// Clear register B to store the sum of odd numbers
+	   LXI H,2501	// Load HL pair with the starting address of the series
+
+BACK: MOV A,M	// Move the current number (pointed by HL) into the accumulator
+	   ANI 01	// Perform AND operation with 01H to check if it's an odd number
+	   JZ SKIP	// If the result is zero (even number), skip the addition
+	   MOV A,B	// Move the current sum from register B into the accumulator
+	   ADD M	// Add the current odd number to the accumulator
+	   MOV B,A	// Move the new sum back into register B
+
+SKIP:  INX H	// Increment the memory pointer to the next number
+	   DCR C	// Decrement the counter
+	   JNZ BACK	// If counter is not zero, repeat the loop
+	   STA 2505	// Store the result (sum of odd numbers) at memory location 2505H
+	   HLT	// Halt the program
+# ORG 2500H
+# DB 04H,05H,04H,02H,05H
+
+##	Calculate the sum of series of even numbers
+
+LDA 2500H  
+MOV C,A          
+MVI B, 00H         
+LXI H, 2501H         
+BACK: MOV A,M        
+ANI 01H             
+JNZ SKIP              
+MOV A,B            
+ADD M                 
+MOV B,A             
+SKIP: INX H           
+DCR C                 
+JNZ BACK              
+STA 2505H           
+HLT                   
+
+#ORG 2500H
+#DB 04H,23H,04H,02H,05H
+
+
+##	write a program in 8085 assembly language for to check if a number is Even or Odd.
+
+LDA 2500H      ; Load the number from memory location 2500H into accumulator
+ANI 01H        ; Perform AND operation with 01H to check the least significant bit
+JNZ ODD        ; If the result is not zero, the number is odd, jump to ODD
+EVEN: MVI A, 00H   ; If zero, load 00H into accumulator (Even)
+STA 2501H          ; Store 00H at memory location 2501H (indicating even)
+JMP END            ; Jump to the end of the program
+
+ODD: MVI A, 01H    ; If the result is not zero, load 01H into accumulator (Odd)
+STA 2501H          ; Store 01H at memory location 2501H (indicating odd)
+
+END: HLT           ; End of the program
+
