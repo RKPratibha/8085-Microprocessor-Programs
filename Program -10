@@ -1,0 +1,13 @@
+##	Write a program in 8085 assembly language to find out square of a number.
+
+LXI H,2050H
+XRA A
+MOV B,M
+LOOP : ADD M
+DCR B
+JNZ LOOP
+STA 3050H
+HLT
+#ORG 2050
+#DB 02H
+
