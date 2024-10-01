@@ -1,0 +1,9 @@
+##Write a program in 8085 assembly language to perform subtraction of two 8 bit number residing at two memory location 2600H, 2601H , and store the result at 2602H.
+
+LXI H 2600 
+MOV A,M
+INX H 
+SUB M
+INX H
+MOV M,A
+HLT
