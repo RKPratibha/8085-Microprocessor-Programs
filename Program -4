@@ -1,0 +1,36 @@
+##Three 8 -bit addition using BC pair
+
+LXI B, 2500
+LDAX B
+MOV E,A
+INX B
+LDAX B
+ADD E
+MOV D,A
+INX B
+LDAX B
+ADD D
+LXI H, 2503
+MOV M,A
+HLT
+#ORG 2500
+#DB 03,03,04
+
+
+#Three 8 - bit addition using DE pair
+
+LXI D, 2500
+LDAX D
+MOV C,A
+INX D
+LDAX D
+ADD C
+MOV B,A
+INX D
+LDAX D
+ADD B
+INX D
+STAX D
+HLT
+#ORG 2500
+#DB 03,03,04
