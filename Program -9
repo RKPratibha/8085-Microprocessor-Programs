@@ -1,0 +1,29 @@
+##Write a program in 8085 assembly language to transfer data block in direct order.
+
+LXI H, 2500 ; Load HL with the source memory address 2500H
+LXI D, 2600 ; Load DE with the destination memory address 2600H
+MVI C, 0A ; Load C with the number of bytes to transfer (10 bytes)
+AGAIN: MOV A,M ; Move the content from the source (HL) to the accumulator (A)
+STAX D ; Store the content of A in the destination (pointed by DE)
+INX H ; Increment HL to point to the next source byte
+INX D ; Increment DE to point to the next destination byte
+DCR C ; Decrement C (the counter for number of bytes left)
+JNZ AGAIN ; If C is not zero, jump to AGAIN and repeat the process
+HLT ; Stop the program when all bytes have been transferred
+#ORG 2500H
+#DB 01H,02H,03H,04H,05H,06H,07H,08H,09H,0AH
+
+##	Write a program in 8085 assembly language to transfer data block in reverse order.
+
+LXI H, 2500 ; Load HL with the starting address of the source (2500H)
+LXI D, 2609 ; Load DE with the starting address of the destination (2609H)
+MVI C, 0A ; Load C with the number of bytes to transfer (10 bytes)
+AGAIN: MOV A,M ; Move the content from memory at HL into the accumulator
+STAX D ; Store the content of A into the memory location pointed to by DE
+INX H ; Increment HL to point to the next source memory location
+DCX D ; Decrement DE to move to the previous destination memory location
+DCR C ; Decrement the counter C
+JNZ AGAIN ; If C is not zero, jump to AGAIN and continue the process
+HLT ; Halt the program
+#ORG 2500H
+#DB 01H,02H,03H,04H,05H,06H,07H,08H,09H,0AH
