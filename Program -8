@@ -1,0 +1,11 @@
+##Write a program in 8085 assembly language to perform multiplication of two 8 bit number
+
+MVI B,03H // Loads B-register with 17H
+MVI C,04H // Loads C-register with 09H
+AGAIN: ADD B // Adds the content of B-register to accumulator
+DCR C // Decrements C-register
+JZ END // Checks for zero; if zero jump to END
+JMP AGAIN // Repeats the addition
+END: STA 2100H // Stores the answer to memory location 2100 H
+HLT // Stop processing
+
