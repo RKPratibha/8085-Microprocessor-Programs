@@ -1,0 +1,65 @@
+##	Write a program in 8085 assembly language to find out the largest of three numbers.
+
+
+LXI H, 2600
+MOV A,M
+INX H
+CMP M
+JNC 200A
+MOV A,M
+INX H
+CMP M
+JNC 2010
+MOV A,M
+INX H
+MOV M,A
+HLT
+#ORG 2600
+#DB 03H,09H,05H
+
+##	 Write a program in 8085 assembly language to find out the smallest of three numbers.
+
+LXI H ,2600
+MOV A,M
+INX H
+CMP M
+JC 200A
+MOV A,M
+INX H
+CMP M
+JC 2010
+MOV A,M
+INX H
+MOV M,A
+HLT
+#ORG 2600
+#DB 03H,09H,05H
+
+##	 Write a program in 8085 assembly language to find out the smallest of two numbers.
+
+LXI H ,2600
+MOV A,M
+INX H
+CMP M
+JC 200A
+MOV A,M
+INX H
+MOV M,A
+HLT
+#ORG 2600
+#DB 09H,05H
+
+##	 Write a program in 8085 assembly language to find out the largest of two numbers.
+
+LXI H, 2600
+MOV A,M
+INX H
+CMP M
+JNC 200A
+MOV A,M
+INX H
+MOV M,A
+HLT
+#ORG 2600
+#DB 09H,05H
+MVI A,00H // Loads the accumulator with 00H
