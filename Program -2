@@ -1,0 +1,9 @@
+####Write a program in 8085 assembly language to perform addition of two 16 bit number using DAD instruction
+
+
+LHLD 2500
+XCHG
+LHLD 2502
+DAD D
+SHLD 2504
+HLT
