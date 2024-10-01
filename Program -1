@@ -1,0 +1,14 @@
+##Write a program in 8085 assembly language to perform addition of two 8 bit number residing at two memory location 2600H, 2601H , and store the result at 2602H
+
+PROGRAM
+
+
+2000	LXI H 2600		
+2001			
+2002			
+2003	MOV A,M		
+2004	INX H 		
+2005	ADD M		
+2006	INX H 		
+2007	MOV M,A		
+2008	HLT		
