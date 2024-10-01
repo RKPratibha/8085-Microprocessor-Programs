@@ -1,0 +1,58 @@
+##	SHIFT AN 8-BIT NUMBER LEFT BY 1 BIT
+
+// The number to be shifted is stored in C050
+// Answer is stored in C051
+LDA C050
+RLC
+STA C051
+HLT
+# ORG C050
+# DB 05H
+
+
+
+
+##	SHIFT AN 8-BIT NUMBER RIGHT BY 1 BIT
+
+// The number to be shifted is stored in C050
+// Answer is stored in C051
+LDA C050
+RRC
+STA C051
+HLT
+# ORG C050
+# DB 05H
+
+
+
+##	 SHIFT AN 8-BIT NUMBER LEFT BY 2 BITS
+
+//The number to be shifted is stored in C050
+//Answer is stored in C051
+LDA C050
+RLC
+RLC
+STA C051
+HLT
+# ORG C050
+# DB 05H
+
+
+
+##	 SHIFT AN 8-BIT NUMBER RIGHT BY 2 BITS
+
+//The number to be shifted is stored in C050
+//Answer is stored in C051
+LDA C050
+RRC
+RRC
+STA C051
+HLT
+# ORG C050
+# DB 05
+
+
+
+16.	 WRITE A CODE FOR SHIFT AN 16-BIT NUMBER LEFT BY 1 BIT
+
+17.	 WRITE A CODE FOR SHIFT AN 16-BIT NUMBER LEFT BY 2 BITS
