@@ -1,1 +1,68 @@
+## 1's COMPLEMENT OF AN 8-BIT NUMBER
+
+// The number to be complemented is stored in C050
+// Answer is stored in C051
+LDA C050
+CMA
+STA C051
+HLT
+# ORG C050
+# DB 05H
+
+Use different values, memory locations and show the calculations
+
+## 1's COMPLEMENT OF A 16-BIT NUMBER
+
+// The 16bit number is stored in C050,C051
+// The answer is stored in C052,C053
+LXI H,C050
+MOV A,M
+CMA
+STA C052
+INX H
+MOV A,M
+CMA
+STA C053
+HLT
+# ORG C050
+# DB 05H,05H
+
+
+Use different values, memory locations and show the calculations
+
+
+## 2's COMPLEMENT OF AN 8-BIT NUMBER
+
+// The number to be complemented is stored in C050
+// Answer is stored in C051
+LDA C050
+CMA
+INR A
+STA C051
+HLT
+# ORG C050
+# DB 06H
+
+Use different values, memory locations and show the calculations
+
+## 2's COMPLEMENT OF A 16-BIT NUMBER
+
+// The 16bit number is stored in C050,C051
+// The answer is stored in C052,C053
+LXI H,C050
+MVI B,00
+MOV A,M
+CMA
+ADI 01
+STA C052
+JNC GO
+INR B
+GO: INX H
+MOV A,M
+CMA
+ADI 01
+STA C053
+HLT
+# ORG C050
+# DB 8CH,5BH
 
