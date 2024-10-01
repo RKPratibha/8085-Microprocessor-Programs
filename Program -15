@@ -1,0 +1,25 @@
+##	WRITE A CODE TO FIND ODD NUMBER FROM THE STRING OF NUMBER RESIDING AT MEMORY LOCATION 2500H TO 2609H AND STORE THEM AT 2600 ONWARDS
+
+LXI H, 2500H   ; Initialize HL pair to point to the start of the string (2500H)
+LXI D, 2600H   ; Initialize DE pair to point to the start of the storage location (2600H)
+
+MVI C, 0AH     ; Set counter for the number of numbers (10 numbers)
+
+NEXT: MOV A,M     ; Load the current number from memory (HL points to current number)
+ANI 01H            ; Check if the number is odd by performing AND with 01H
+JZ SKIP            ; If the result is zero (even number), skip to the next number
+
+MOV A,M           ; If it's odd, load the number back into A
+MOV M,A          ; Store the odd number at the location pointed to by DE
+STAX D             ; Store the number in the destination memory (DE points to 2600H onward)
+INX D              ; Increment DE to point to the next storage location
+
+SKIP: INX H        ; Increment HL to point to the next number in the string
+DCR C              ; Decrement the counter
+JNZ NEXT           ; If counter is not zero, continue the loop
+
+HLT                ; Halt the program
+
+
+# ORG 2500H
+# DB 03H, 04H, 07H, 08H, 09H, 10H, 11H, 12H, 13H, 14H
